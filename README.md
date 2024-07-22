@@ -1,1 +1,68 @@
-# CodeAlpha
+import java.util.Scanner;
+
+public class GradeTracer {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        // Input the number of students
+        System.out.print("Enter the number of students: ");
+        int numStudents = scanner.nextInt();
+        
+        // Array to store student scores
+        int[] scores = new int[numStudents];
+        
+        // Input each student's score
+        for (int i = 0; i < numStudents; i++) {
+            System.out.printf("Enter score for student %d: ", i + 1);
+            scores[i] = scanner.nextInt();
+        }
+        
+        // Calculate average score
+        double averageScore = calculateAverage(scores);
+        
+        // Find highest score
+        int highestScore = findHighestScore(scores);
+        
+        // Find lowest score
+        int lowestScore = findLowestScore(scores);
+        
+        // Display results
+        System.out.println("\nResults:");
+        System.out.printf("Average Score: %.2f\n", averageScore);
+        System.out.println("Highest Score: " + highestScore);
+        System.out.println("Lowest Score: " + lowestScore);
+        
+        scanner.close();
+    }
+    
+    // Method to calculate average score
+    public static double calculateAverage(int[] scores) {
+        int sum = 0;
+        for (int score : scores) {
+            sum += score;
+        }
+        return (double) sum / scores.length;
+    }
+    
+    // Method to find highest score
+    public static int findHighestScore(int[] scores) {
+        int highest = scores[0];
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] > highest) {
+                highest = scores[i];
+            }
+        }
+        return highest;
+    }
+    
+    // Method to find lowest score
+    public static int findLowestScore(int[] scores) {
+        int lowest = scores[0];
+        for (int i = 1; i < scores.length; i++) {
+            if (scores[i] < lowest) {
+                lowest = scores[i];
+            }
+        }
+        return lowest;
+    }
+}
